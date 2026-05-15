@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8">
@@ -82,42 +82,22 @@
     <h2 class="title">Цели и задачи проекта</h2>
     <div class="rule"></div>
     
-    <div class="callout" style="font-size:24px; margin-bottom:36px">
-      <small>Цель</small>
-      Создать веб-платформу для автоматизации академических пересдач в РТУ МИРЭА
-    </div>
-    <div class="tile-grid" style="grid-template-columns:repeat(3,1fr); gap:18px">
-      
-        <div class="tile">
-          <div class="ic">01</div>
-          <h4>Личный кабинет студента</h4>
-          <p>LKS — просмотр долгов, запись на пересдачи, контроль статусов</p>
+    <div class="grid-2" style="grid-template-columns:1.4fr 1fr;gap:72px">
+      <div style="display:flex;flex-direction:column;justify-content:flex-start;gap:28px">
+        <p class="lead" style="font-size:23px;line-height:1.35">Создать веб-платформу для автоматизации академических пересдач в РТУ МИРЭА</p>
+        <div class="callout">
+          <small>Подход</small>
+          Полный цикл — от указания доступности преподавателя до фиксации оценки — без бумаги
         </div>
-        <div class="tile">
-          <div class="ic">02</div>
-          <h4>Портал персонала</h4>
-          <p>LKP с разграничением прав для 6 ролей по модели RBAC</p>
-        </div>
-        <div class="tile">
-          <div class="ic">03</div>
-          <h4>REST API на NestJS</h4>
-          <p>С интеграцией МИРЭА SSO — Keycloak, OpenID Connect, PKCE</p>
-        </div>
-        <div class="tile">
-          <div class="ic">04</div>
-          <h4>Интеграция с инфраструктурой</h4>
-          <p>lk.mirea.ru (HTML-парсинг долгов) и расписанием МИРЭА (iCal)</p>
-        </div>
-        <div class="tile">
-          <div class="ic">05</div>
-          <h4>Автопроверка конфликтов</h4>
-          <p>Конфликты расписания обнаруживаются при создании слотов</p>
-        </div>
-        <div class="tile">
-          <div class="ic">06</div>
-          <h4>Полный аудит</h4>
-          <p>Журнал всех действий в системе с привязкой к пользователю</p>
-        </div>
+      </div>
+      <div class="task-list">
+        <div class="task-item"><span class="task-n">01</span><div><h4>Личный кабинет студента</h4><p>LKS — просмотр долгов, запись на пересдачи, контроль статусов</p></div></div>
+        <div class="task-item"><span class="task-n">02</span><div><h4>Портал персонала</h4><p>LKP с разграничением прав для 6 ролей по модели RBAC</p></div></div>
+        <div class="task-item"><span class="task-n">03</span><div><h4>REST API на NestJS</h4><p>С интеграцией МИРЭА SSO — Keycloak, OpenID Connect, PKCE</p></div></div>
+        <div class="task-item"><span class="task-n">04</span><div><h4>Интеграция с инфраструктурой</h4><p>lk.mirea.ru (HTML-парсинг долгов) и расписанием МИРЭА (iCal)</p></div></div>
+        <div class="task-item"><span class="task-n">05</span><div><h4>Автопроверка конфликтов</h4><p>Конфликты расписания обнаруживаются при создании слотов</p></div></div>
+        <div class="task-item task-item--last"><span class="task-n">06</span><div><h4>Полный аудит</h4><p>Журнал всех действий в системе с привязкой к пользователю</p></div></div>
+      </div>
     </div>
   </div>
   <div class="foot"><strong>РТУ МИРЭА · Система пересдач</strong><span class="spacer"></span>Юшков А. Д. · УИБО-05-23 · 2026</div>
@@ -375,7 +355,7 @@
           <div class="dd">React 18 + Vite — портал для 6 ролей RBAC</div>
         </div>
       </div>
-      <div class="arch-conn">↓ &nbsp; HTTP / REST &nbsp; ↓</div>
+      <div class="arch-conn merge"><span>HTTP / REST</span></div>
       <div class="arch-row">
         <div class="arch-tile primary" style="flex:2">
           <div class="kk">API · ПОРТ 4000</div>
@@ -383,7 +363,7 @@
           <div class="dd">JWT (passport-jwt) + RolesGuard + @Roles() · ValidationPipe · CORS</div>
         </div>
       </div>
-      <div class="arch-conn">↓ &nbsp; внешние интеграции &nbsp; ↓</div>
+      <div class="arch-conn split"><span>Внешние интеграции</span></div>
       <div class="arch-row">
         
           <div class="arch-tile">
@@ -1854,7 +1834,7 @@
     <h2 class="title">Что реализовано</h2>
     <div class="rule"></div>
     
-    <div class="kpi-row" style="margin-bottom:36px">
+    <div class="kpi-row" style="margin-top:24px; margin-bottom:32px">
       <div class="kpi"><div class="v">3</div><div class="l">приложения: API + ЛКС + ЛКП</div></div>
       <div class="kpi"><div class="v">6</div><div class="l">ролей RBAC с разграничением</div></div>
       <div class="kpi"><div class="v">6</div><div class="l">этапов автоматизированного процесса</div></div>

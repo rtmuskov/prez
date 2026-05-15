@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Skill(ui-ux-pro-max:ui-ux-pro-max)",
-      "Bash(start *)"
+      "Bash(start *)",
+      "Bash(Get-Content \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\index.html\")",
+      "Bash(Select-Object -Skip 352 -First 70)",
+      "Bash(Out-String)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\index.html\" -Raw -Encoding UTF8\\) | Select-String \"arch-conn\" -AllMatches | ForEach-Object { $_.Matches } | ForEach-Object { $_.Value } | Select-Object -First 5)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\index.html\" -Encoding UTF8\\) | Select-String \"arch-conn\")"
     ]
   }
 }

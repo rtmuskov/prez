@@ -113,21 +113,25 @@ deck-stage > section {
   display: flex; flex-direction: column;
 }
 
-/* Vertical centering — content blocks grow to fill available height */
-.stage > .tile-grid,
-.stage > .kvlist,
-.stage > .kpi-row,
+/* Vertical centering — fill containers stretch, compact containers center */
 .stage > .arch,
-.stage > .steps,
-.stage > .bullets,
 .stage > .compare-section {
   flex: 1;
   min-height: 0;
 }
-/* Grid/row containers: keep items packed to start, not stretched */
-.stage > .tile-grid,
-.stage > .kpi-row {
-  align-content: start;
+/* Tile grid: fills space and centers rows */
+.stage > .tile-grid {
+  flex: 1;
+  min-height: 0;
+  align-content: center;
+}
+/* Compact containers: center themselves in remaining vertical space */
+.stage > .kvlist,
+.stage > .kpi-row,
+.stage > .steps,
+.stage > .bullets {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .eyebrow {
@@ -342,12 +346,13 @@ deck-stage > section {
   gap: 48px;
   flex: 1;
   min-height: 0;
+  align-content: center;
 }
 .grid-2-1 {
-  display: grid; grid-template-columns: 2fr 1fr; gap: 56px; flex: 1; min-height: 0;
+  display: grid; grid-template-columns: 2fr 1fr; gap: 56px; flex: 1; min-height: 0; align-content: center;
 }
 .grid-1-2 {
-  display: grid; grid-template-columns: 1fr 2fr; gap: 56px; flex: 1; min-height: 0;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 56px; flex: 1; min-height: 0; align-content: center;
 }
 
 .bullets {
@@ -464,6 +469,10 @@ deck-stage > section {
 .shot-split.shot-dual {
   grid-template-columns: 1.45fr 1fr;
   align-items: stretch;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .shot-split.shot-dual .shot-dual-stack {
   display: flex; flex-direction: column;
@@ -497,13 +506,13 @@ deck-stage > section {
 /* Single-image stage screenshot (one big screenshot + side description) */
 .shot-split {
   display: grid;
-  grid-template-columns: 1.45fr 1fr;
-  gap: 56px;
-  flex: 1 1 auto;
-  min-height: 0;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 48px;
+  margin-top: auto;
+  margin-bottom: auto;
   align-items: start;
 }
-.shot-split.rev { grid-template-columns: 1fr 1.45fr; }
+.shot-split.rev { grid-template-columns: 1fr 1.7fr; }
 .shot-split > .browser {
   min-height: 0;
   align-self: start;
@@ -521,7 +530,7 @@ deck-stage > section {
 .shot-split > .img-card { min-height: 0; height: 100%; }
 .shot-side {
   display: flex; flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 18px;
   padding-top: 4px;
 }
@@ -587,6 +596,12 @@ deck-stage > section {
 
 .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
+/* Table as direct stage child — center vertically */
+.stage > table.tbl {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 /* Table */
 .tbl {
   width: 100%; border-collapse: separate; border-spacing: 0;
@@ -648,31 +663,62 @@ deck-stage > section {
 
 /* arch */
 .arch {
-  display: flex; flex-direction: column; gap: 18px;
+  display: flex; flex-direction: column; gap: 0;
   align-items: center;
-  padding-top: 16px;
+  padding-top: 4px;
+  justify-content: center;
 }
-.arch-row { display: flex; gap: 18px; justify-content: center; align-items: stretch; width: 100%; }
+.arch-row {
+  display: flex; gap: 24px;
+  justify-content: center; align-items: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+/* Layer 1 — клиенты (cyan accent) */
+.arch > .arch-row:nth-child(1) .arch-tile {
+  border-top: 3px solid var(--cyan);
+  background: linear-gradient(160deg, #F0FBFF 0%, #fff 60%);
+}
+/* Layer 2 — API (navy, центральный) */
+.arch > .arch-row:nth-child(3) .arch-tile {
+  border-top: none;
+}
+/* Layer 3 — интеграции (surf bg, синяя рамка) */
+.arch > .arch-row:nth-child(5) .arch-tile {
+  background: var(--surf);
+  border-top: 3px solid var(--blue);
+}
+.arch > .arch-row:nth-child(5) .arch-tile .ll { font-size: 18px; }
+.arch > .arch-row:nth-child(5) .arch-tile .dd { font-size: 13px; }
+.arch > .arch-row:nth-child(5) .arch-tile .kk { font-size: 10px; }
+
 .arch-tile {
   flex: 1;
   background: #fff;
   border: 1px solid var(--line);
-  padding: 20px 22px;
+  padding: 16px 20px;
   border-radius: 14px;
   text-align: left;
-  box-shadow: 0 2px 14px rgba(0,0,32,0.06);
+  box-shadow: 0 2px 16px rgba(0,0,32,0.06);
+  display: flex; flex-direction: column; justify-content: center;
 }
-.arch-tile.primary { background: var(--navy); color: #fff; border-color: var(--navy); box-shadow: 0 4px 20px rgba(0,20,74,0.18); }
+.arch-tile.primary {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%);
+  color: #fff; border-color: var(--navy-2);
+  box-shadow: 0 6px 28px rgba(0,20,74,0.22);
+}
 .arch-tile.primary .kk { color: var(--cyan); }
+.arch-tile.primary .dd { color: rgba(255,255,255,0.65); }
 .arch-tile .kk {
   font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--blue); font-weight: 700; margin-bottom: 6px;
 }
 .arch-tile .ll {
-  font-size: 22px; font-weight: 700; line-height: 1.2;
+  font-size: 24px; font-weight: 700; line-height: 1.2;
 }
 .arch-tile .dd {
-  font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 4px;
+  font-size: 15px; margin-top: 5px;
 }
 .arch-tile:not(.primary) .dd { color: var(--muted); }
 
@@ -706,6 +752,40 @@ deck-stage > section {
   background: var(--surf-2); padding: 3px 8px; border-radius: 6px;
   font-size: 16px; color: var(--navy);
   border: 1px solid var(--line-2);
+}
+
+/* ===== TASK LIST (слайд Цели и задачи) ===== */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.task-item {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+.task-item--last { border-bottom: none; }
+.task-n {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--blue);
+  flex: 0 0 24px;
+  padding-top: 3px;
+}
+.task-item h4 {
+  font-size: 22px; font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+.task-item p {
+  font-size: 17px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.35;
 }
 
 /* highlight callout */
@@ -925,21 +1005,58 @@ deck-stage > section {
   background: linear-gradient(180deg, var(--surf) 0%, #fff 100%);
 }
 
-/* arch-conn visual */
+/* arch-conn — вертикальная стрелка с pill */
 .arch-conn {
-  font-size: 13px;
-  color: var(--muted);
-  display: flex; align-items: center; gap: 16px;
-  width: 100%; text-align: center;
-  justify-content: center;
+  flex: 0 0 auto;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  height: 80px;
+  width: 100%;
 }
-.arch-conn::before, .arch-conn::after {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line-2));
+/* базовая линия — переопределяется в вариантах */
+.arch-conn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 .arch-conn::after {
-  background: linear-gradient(90deg, var(--line-2), transparent);
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 12px solid var(--blue);
+  z-index: 0;
+}
+
+/* LKS + LKP → API: две плавные кривые сходятся */
+.arch-conn.merge::before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1728 80' preserveAspectRatio='none'><path d='M426 0 C426 50 864 30 864 68' fill='none' stroke='%232657E0' stroke-width='2' stroke-opacity='0.45' stroke-linecap='round'/><path d='M1302 0 C1302 50 864 30 864 68' fill='none' stroke='%232657E0' stroke-width='2' stroke-opacity='0.45' stroke-linecap='round'/></svg>");
+  background-size: 100% 100%;
+}
+
+/* API → 5 блоков: плавные кривые расходятся */
+.arch-conn.split::before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1728 80' preserveAspectRatio='none'><path d='M864 0 C864 30 163 50 163 80' fill='none' stroke='%232657E0' stroke-width='2' stroke-opacity='0.45' stroke-linecap='round'/><path d='M864 0 C864 30 514 50 514 80' fill='none' stroke='%232657E0' stroke-width='2' stroke-opacity='0.45' stroke-linecap='round'/><path d='M864 0 C864 30 864 50 864 80' fill='none' stroke='%232657E0' stroke-width='2' stroke-opacity='0.45' stroke-linecap='round'/><path d='M864 0 C864 30 1214 50 1214 80' fill='none' stroke='%232657E0' stroke-width='2' stroke-opacity='0.45' stroke-linecap='round'/><path d='M864 0 C864 30 1565 50 1565 80' fill='none' stroke='%232657E0' stroke-width='2' stroke-opacity='0.45' stroke-linecap='round'/></svg>");
+  background-size: 100% 100%;
+}
+.arch-conn.split::after { display: none; }
+/* pill поверх линии */
+.arch-conn span {
+  position: relative; z-index: 1;
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  padding: 6px 20px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--blue);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,32,0.06);
 }
 
 /* Subtle section background gradient */
