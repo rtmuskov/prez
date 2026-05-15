@@ -1642,8 +1642,11 @@
     <h2 class="title">Четыре интеграции с инфраструктурой МИРЭА</h2>
     <div class="rule"></div>
     
-    <div class="tile-grid" style="grid-template-columns:repeat(2,1fr); gap:20px">
-      <div class="tile"><div class="ic">SSO</div><h4>sso.mirea.ru — Keycloak</h4><p>OpenID Connect PKCE · code_verifier (64 байта) → code_challenge (SHA-256) → авторизация → обмен кода на token. Поддержка 2FA.</p></div><div class="tile"><div class="ic">gRPC</div><h4>attendance.mirea.ru — Pulse</h4><p>gRPC GetMeInfo → ФИО, ID преподавателя, ID группы. Один запрос на сессию, ответ кэшируется.</p></div><div class="tile"><div class="ic">HTML</div><h4>lk.mirea.ru — Bitrix ЛК</h4><p>Эмуляция браузерной сессии, 7-шаговый маршрут редиректов. HTML-парсинг таблицы долгов, <code>SimpleCookieJar</code>, <code>selectStudentProfile</code>.</p></div><div class="tile"><div class="ic">iCal</div><h4>schedule-of.mirea.ru</h4><p>REST API + iCal-фид по преподавателю. Синхронизация раз в 24 ч, проверка <code>VEVENT</code>-конфликтов при создании слота → 400 Bad Request с описанием.</p></div>
+    <div class="task-grid-2">
+      <div class="task-item"><span class="task-n">SSO</span><div><h4>sso.mirea.ru — Keycloak</h4><p>OpenID Connect PKCE · code_verifier → code_challenge (SHA-256) · авторизация · обмен кода на токен · поддержка 2FA</p></div></div>
+      <div class="task-item"><span class="task-n">HTML</span><div><h4>lk.mirea.ru — Bitrix ЛК</h4><p>Эмуляция браузерной сессии · 7-шаговый маршрут редиректов · HTML-парсинг таблицы долгов</p></div></div>
+      <div class="task-item task-item--last"><span class="task-n">gRPC</span><div><h4>attendance.mirea.ru — Pulse</h4><p>GetMeInfo → ФИО, ID преподавателя, ID группы · один запрос на сессию, ответ кэшируется</p></div></div>
+      <div class="task-item task-item--last"><span class="task-n">iCal</span><div><h4>schedule-of.mirea.ru</h4><p>REST API + iCal-фид по преподавателю · синхронизация раз в 24 ч · проверка VEVENT-конфликтов при создании слота</p></div></div>
     </div>
   </div>
   <div class="foot"><strong>Глубокая интеграция</strong><span class="spacer"></span>не рядом с МИРЭА — внутри</div>

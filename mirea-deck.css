@@ -630,11 +630,18 @@ deck-stage > section {
 .tbl td.code { font-family: ui-monospace, Menlo, monospace; }
 
 .tbl-rbac { font-size: 17px; }
-.tbl-rbac th { font-size: 11px; }
-.tbl-rbac th, .tbl-rbac td { padding: 11px 10px; text-align: center; }
-.tbl-rbac td:first-child { text-align: left; font-weight: 600; color: var(--ink); }
-.tbl-rbac .y { color: var(--ok); font-weight: 700; font-size: 20px; }
-.tbl-rbac .n { color: var(--line-2); font-weight: 500; }
+.tbl-rbac th {
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--surf); color: var(--muted); font-weight: 700;
+  padding: 14px 10px;
+}
+.tbl-rbac th:first-child { text-align: left; }
+.tbl-rbac td { padding: 13px 10px; text-align: center; }
+.tbl-rbac td:first-child {
+  text-align: left; font-weight: 600; color: var(--ink);
+}
+.tbl-rbac .y { color: var(--ok); font-weight: 700; font-size: 18px; }
+.tbl-rbac .n { color: var(--line-2); font-weight: 400; }
 
 /* Steps row */
 .steps {
@@ -764,15 +771,35 @@ deck-stage > section {
   display: flex;
   align-items: baseline;
   gap: 22px;
-  padding: 15px 0;
+  padding: 36px 0;
   border-bottom: 1px solid var(--line);
 }
 .task-item--last { border-bottom: none; }
+
+/* Двухколонный грид задач с выровненными разделителями */
+.task-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 72px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.task-grid-2 .task-item {
+  padding: 40px 0;
+  border-bottom: none;
+}
+.task-grid-2 .task-item:nth-child(odd) {
+  padding-right: 36px;
+  border-right: 1px solid var(--line);
+}
+.task-grid-2 .task-item:nth-child(even) {
+  padding-left: 36px;
+}
 .task-n {
   font-size: 11px; font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--blue);
-  flex: 0 0 24px;
+  flex: 0 0 36px;
   padding-top: 3px;
 }
 .task-item h4 {
