@@ -47,22 +47,22 @@
     
     <div class="grid-2" style="gap:64px">
       <div>
-        <p class="lead">Пересдачи в МИРЭА сегодня организуются вручную — бумажные заявления, устные договорённости и фрагментированный обмен информацией.</p>
+        <p class="lead">Пересдачи в МИРЭА сегодня — это бумажные допуски, очереди к учебному отделу и устные договорённости. Каждый участник процесса тратит время на волокиту вместо работы.</p>
         <ul class="bullets">
-          <li><b>Студент</b> не знает о доступных слотах и не может самостоятельно записаться</li>
-          <li><b>Преподаватель</b> не имеет единого инструмента для указания своей доступности</li>
-          <li><b>Учебный отдел</b> тратит часы на согласование между всеми участниками</li>
+          <li><b>Студент</b> ищет расписание на бумажном стенде, стоит в очереди за допуском в день экзамена и не знает, состоится ли пересдача вообще</li>
+          <li><b>Преподаватель</b> не видит, сколько студентов придёт — если никто не записался, он узнаёт об этом только придя на пересдачу и отсидев всю пару</li>
+          <li><b>Кафедра</b> согласовывает слоты через переписку и бумажные заявки, всё делается вручную</li>
         </ul>
       </div>
       <div>
         <ul class="bullets">
-          <li>Отсутствует <b>автоматическая проверка</b> конфликтов в расписании</li>
-          <li>Нет <b>единого журнала аудита</b> — невозможно отследить историю действий</li>
-          <li>Бумажные заявления <b>теряются</b>, согласования срываются по человеческому фактору</li>
+          <li><b>Учебный отдел</b> печатает допуски, выдаёт их лично и оказывается в эпицентре очередей перед каждой пересдачей</li>
+          <li><b>Бумажные документы</b> теряются, согласования срываются из-за человеческого фактора</li>
+          <li>Весь процесс можно перевести <b>в онлайн</b> — удобнее каждому участнику и без лишней бюрократии</li>
         </ul>
         <div class="callout" style="margin-top:32px">
           <small>Цель работы</small>
-          Автоматизировать полный цикл организации пересдач в РТУ МИРЭА
+          Перевести полный цикл организации пересдач в РТУ МИРЭА в цифровой формат
         </div>
       </div>
     </div>
@@ -84,15 +84,15 @@
     
     <div class="grid-2" style="grid-template-columns:1.4fr 1fr;gap:72px">
       <div style="display:flex;flex-direction:column;justify-content:flex-start;gap:28px">
-        <p class="lead" style="font-size:23px;line-height:1.35">Создать веб-платформу для автоматизации академических пересдач в РТУ МИРЭА</p>
+        <p class="lead" style="font-size:23px;line-height:1.35">Создать веб-платформу, которая переводит организацию пересдач в РТУ МИРЭА из бумажного формата в цифровой — удобно каждому участнику процесса</p>
         <div class="callout">
           <small>Подход</small>
-          Полный цикл — от указания доступности преподавателя до фиксации оценки — без бумаги
+          Полный цикл онлайн — от указания доступности преподавателя до выдачи допуска и фиксации оценки — без очередей и бумаги
         </div>
       </div>
       <div class="task-list">
-        <div class="task-item"><span class="task-n">01</span><div><h4>Личный кабинет студента</h4><p>LKS — просмотр долгов, запись на пересдачи, контроль статусов</p></div></div>
-        <div class="task-item"><span class="task-n">02</span><div><h4>Портал персонала</h4><p>LKP с разграничением прав для 6 ролей по модели RBAC</p></div></div>
+        <div class="task-item"><span class="task-n">01</span><div><h4>Личный кабинет студента</h4><p>Онлайн-запись на пересдачу без очередей и бумажных допусков — долги, слоты, статусы в одном месте</p></div></div>
+        <div class="task-item"><span class="task-n">02</span><div><h4>Портал персонала</h4><p>Преподаватель видит список записавшихся заранее; кафедра и учебный отдел работают онлайн без бумажных заявок</p></div></div>
         <div class="task-item"><span class="task-n">03</span><div><h4>REST API на NestJS</h4><p>С интеграцией МИРЭА SSO — Keycloak, OpenID Connect, PKCE</p></div></div>
         <div class="task-item"><span class="task-n">04</span><div><h4>Интеграция с инфраструктурой</h4><p>lk.mirea.ru (HTML-парсинг долгов) и расписанием МИРЭА (iCal)</p></div></div>
         <div class="task-item"><span class="task-n">05</span><div><h4>Автопроверка конфликтов</h4><p>Конфликты расписания обнаруживаются при создании слотов</p></div></div>
@@ -199,7 +199,7 @@
     <div class="eyebrow">TO BE · Целевой процесс</div>
     <h2 class="title sm">Запись студента — серверная проверка и подтверждение</h2>
     <p class="bpmn-lead">Сервер проверяет BR-01 (≥ 12 ч до пересдачи), наличие мест, отсутствие конфликтов в iCal и фиксирует запись с пометкой источника self.</p>
-    <div class="bpmn-tags"><span class="tag outline">BR-01 ≥ 12 ч</span><span class="tag outline">конфликты iCal</span><span class="tag outline">enrollments</span><span class="tag outline">audit log</span></div>
+    <div class="bpmn-tags"><span class="tag outline">BR-01 ≥ 12 ч</span><span class="tag outline">конфликты iCal</span><span class="tag outline">зачисления</span><span class="tag outline">журнал аудита</span></div>
     <div class="bpmn-block">
       <img src="assets/image-7-2.jpeg" alt="Запись студента — серверная проверка и подтверждение" loading="eager" decoding="sync">
     </div>
@@ -236,7 +236,7 @@
   <div class="stage" style="padding:48px 96px 28px 96px">
     <div class="eyebrow">TO BE · Целевой процесс</div>
     <h2 class="title sm">Проведение пересдачи — фиксация результата</h2>
-    <p class="bpmn-lead">Результат проходит через сервис: при оценке ≥ 3 — долг автоматически закрывается (BR-03), запись получает статус completed, действие пишется в AuditLog.</p>
+    <p class="bpmn-lead">Результат проходит через сервис: при passed = true (преподаватель отмечает «Сдал») долг автоматически закрывается (BR-03), запись получает статус completed, действие пишется в AuditLog.</p>
     <div class="bpmn-tags"><span class="tag outline">BR-03</span><span class="tag outline">auto close debt</span><span class="tag outline">completed</span><span class="tag outline">audit</span></div>
     <div class="bpmn-block">
       <img src="assets/image-8-2.jpeg" alt="Проведение пересдачи — фиксация результата" loading="eager" decoding="sync">
@@ -294,7 +294,7 @@
     <div class="eyebrow">TO BE · Целевой процесс</div>
     <h2 class="title sm">Администрирование пользователей и данных</h2>
     <p class="bpmn-lead">Параллельный процесс: администратор управляет пользователями, ролями, долгами и любыми сущностями с полным аудитом изменений.</p>
-    <div class="bpmn-tags"><span class="tag outline">admin</span><span class="tag outline">soft delete</span><span class="tag outline">history</span><span class="tag outline">audit</span></div>
+    <div class="bpmn-tags"><span class="tag outline">администратор</span><span class="tag outline">мягкое удаление</span><span class="tag outline">история</span><span class="tag outline">аудит</span></div>
     <div class="bpmn-block">
       <img src="assets/image-10-1.jpeg" alt="Администрирование пользователей и данных" loading="eager" decoding="sync">
     </div>
@@ -324,7 +324,7 @@
     <div class="rule"></div>
     
     <div class="kvlist">
-      <div class="k">Backend</div><div class="v"><code>NestJS 10</code> · <code>TypeORM</code> · <code>PostgreSQL 15</code></div><div class="k">Frontend</div><div class="v"><code>React 18</code> · <code>Vite 5</code> · <code>Tailwind CSS 3</code></div><div class="k">State / Data</div><div class="v"><code>TanStack Query v5</code> · <code>Zustand</code></div><div class="k">Монорепо</div><div class="v"><code>pnpm workspaces</code> + <code>Turborepo</code></div><div class="k">Типизация</div><div class="v"><code>TypeScript 5</code>, общий пакет <code>@mirea/types</code></div><div class="k">UI-компоненты</div><div class="v">Общая библиотека <code>@mirea/ui</code></div><div class="k">Авторизация</div><div class="v"><code>JWT (passport-jwt)</code> + <code>@Roles()</code> + <code>RolesGuard</code></div><div class="k">HTTP-клиент</div><div class="v"><code>Axios</code> + interceptor — JWT, auto-logout при 401</div><div class="k">Интеграции</div><div class="v">Keycloak SSO · Pulse gRPC · lk.mirea.ru · schedule-of.mirea.ru</div>
+      <div class="k">Бэкенд</div><div class="v"><code>NestJS 10</code> · <code>TypeORM</code> · <code>PostgreSQL 17</code></div><div class="k">Фронтенд</div><div class="v"><code>React 18</code> · <code>Vite 5</code> · <code>Tailwind CSS 3</code></div><div class="k">Состояние / Данные</div><div class="v"><code>TanStack Query v5</code> · <code>Zustand</code></div><div class="k">Монорепо</div><div class="v"><code>pnpm workspaces</code> + <code>Turborepo</code></div><div class="k">Типизация</div><div class="v"><code>TypeScript 5</code>, общий пакет <code>@mirea/types</code></div><div class="k">UI-компоненты</div><div class="v">Общая библиотека <code>@mirea/ui</code></div><div class="k">Авторизация</div><div class="v"><code>JWT (passport-jwt)</code> + <code>@Roles()</code> + <code>RolesGuard</code></div><div class="k">HTTP-клиент</div><div class="v"><code>Axios</code> + interceptor — JWT, auto-logout при 401</div><div class="k">Интеграции</div><div class="v">Keycloak SSO · Pulse gRPC · lk.mirea.ru · schedule-of.mirea.ru</div>
     </div>
   </div>
   <div class="foot"><strong>РТУ МИРЭА · Система пересдач</strong><span class="spacer"></span>Юшков А. Д. · УИБО-05-23 · 2026</div>
@@ -368,7 +368,7 @@
         
           <div class="arch-tile">
             <div class="kk">БД</div>
-            <div class="ll">PostgreSQL 15</div>
+            <div class="ll">PostgreSQL 17</div>
             <div class="dd">основная БД, TypeORM</div>
           </div>
           <div class="arch-tile">
@@ -457,18 +457,19 @@
         <li><b>Долги из внутренней БД</b> с кнопкой «Записаться»</li>
         <li><b>Долги с lk.mirea.ru</b> в реальном времени — HTML-парсинг через SSO-сессию</li>
         <li><b>Запись на пересдачу:</b> выбор слота, проверка мест, подтверждение</li>
+        <li><b>Расписание своей группы</b> — автоматически подгружается по группе студента</li>
       </ul>
       <ul class="bullets">
         <li><b>BR-01:</b> запись возможна не позже чем за <b>12 часов</b> до начала</li>
-        <li><b>Просмотр своих записей</b> и статуса: <code>enrolled</code> · <code>completed</code> · <code>absent</code></li>
-        <li><b>BR-03:</b> автоматическое закрытие задолженности при оценке ≥ 3</li>
+        <li><b>Просмотр своих записей</b> и статуса: <code>записан</code> · <code>завершено</code> · <code>не явился</code></li>
+        <li><b>BR-03:</b> автоматическое закрытие задолженности при сдаче</li>
       </ul>
     </div>
     <div class="kpi-row" style="margin-top:48px">
       <div class="kpi"><div class="v">2</div><div class="l">источника<br>задолженностей</div></div>
-      <div class="kpi"><div class="v">3</div><div class="l">способа<br>аутентификации</div></div>
+      <div class="kpi"><div class="v">2</div><div class="l">способа<br>аутентификации</div></div>
       <div class="kpi"><div class="v">12 ч</div><div class="l">минимум до начала<br>(BR-01)</div></div>
-      <div class="kpi"><div class="v">авто</div><div class="l">закрытие долга<br>при оценке ≥ 3</div></div>
+      <div class="kpi"><div class="v">авто</div><div class="l">закрытие долга<br>при сдаче</div></div>
     </div>
   </div>
   <div class="foot"><strong>РТУ МИРЭА · Система пересдач</strong><span class="spacer"></span>Юшков А. Д. · УИБО-05-23 · 2026</div>
@@ -557,7 +558,7 @@
       <div class="what">ИСТОЧНИК 1</div>
       <h3>Авторитетные долги из БД системы</h3>
       <p class="lead">Записи Debt создаются учебным отделом и администратором. Кнопка «Записаться» сразу ведёт на ближайшие доступные слоты.</p>
-      <ul class="bullets"><li>Статусы <code>active</code> · <code>closed</code> · <code>unresolved</code></li><li>Подсветка дисциплин с приближающимся дедлайном</li><li>Авто-закрытие при оценке ≥ 3 (BR-03)</li></ul>
+      <ul class="bullets"><li>Цветные статусы: <code>active</code> · <code>closed</code> · <code>unresolved</code></li><li>Авто-закрытие при passed = true (BR-03)</li></ul>
       <div class="stamp"><div class="step-dot">1</div><div>Источник 1 из 2</div></div>
     </div></div>
   </div>
@@ -580,7 +581,7 @@
       <div class="what">ИСТОЧНИК 2</div>
       <h3>Парсинг живых данных с lk.mirea.ru</h3>
       <p class="lead">Параллельно сервер открывает SSO-сессию в Bitrix-ЛК, проходит 7-шаговый редирект и парсит HTML-таблицу долгов.</p>
-      <ul class="bullets"><li>Эмуляция браузерной сессии · <code>SimpleCookieJar</code></li><li>Маршрут редиректов: SSO → ЛК → selectStudentProfile</li><li>Кэш на 5 минут, чтобы не нагружать lk.mirea.ru</li></ul>
+      <ul class="bullets"><li>Эмуляция браузерной сессии · <code>SimpleCookieJar</code></li><li>Маршрут редиректов: SSO → ЛК → selectStudentProfile</li><li>Каждый запрос — свежий HTTP-запрос к lk.mirea.ru</li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Источник 2 из 2</div></div>
     </div>
     <div class="browser">
@@ -627,22 +628,22 @@
   </div>
   <div class="stage" style="padding-bottom:32px">
     <div class="eyebrow">Раздел 4 · ЛКС · Расписание МИРЭА</div>
-    <h2 class="title sm" style="margin-bottom:18px">Поиск — преподаватели, аудитории</h2>
+    <h2 class="title sm" style="margin-bottom:18px">Расписание своей группы — автоматически</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
-      <div class="what">УНИВЕРСАЛЬНЫЙ ПОИСК</div>
-      <h3>Группа, преподаватель или аудитория</h3>
-      <p class="lead">Тот же эндпоинт ищет по любому типу: группа УИБО-05-23, преподаватель «Морозов», аудитория «А-103». В выдаче — тип сущности и название.</p>
-      <ul class="bullets"><li>Тип сущности: <code>group</code> / <code>teacher</code> / <code>room</code></li><li>iCal-фид расписания подгружается по клику</li><li><code>GET /api/mirea-schedule/disciplines/:id/teachers</code></li><li>Эти же данные нужны системе для проверки конфликтов слотов</li></ul>
-      <div class="stamp"><div class="step-dot">2</div><div>Универсальный поиск</div></div>
+      <div class="what">РАСПИСАНИЕ</div>
+      <h3>Группа загружается без поиска</h3>
+      <p class="lead">Страница <code>/schedule</code> автоматически запрашивает <code>GET /mirea-schedule/group/my/planning</code> и показывает недельное расписание группы студента. Поиск по другим группам доступен только если группа не привязана.</p>
+      <ul class="bullets"><li>Автоопределение группы по профилю пользователя</li><li>Недельный календарь — май 2026</li><li>Обычные пары и слоты пересдач в одном виде</li></ul>
+      <div class="stamp"><div class="step-dot">2</div><div>Расписание группы</div></div>
     </div>
     <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lks.mirea.ru/schedule?q=Морозов</div></div>
-      <div class="bd contain"><img src="assets/image-17-2.png" alt="Группа, преподаватель или аудитория" loading="eager" decoding="sync"></div>
+      <div class="bb"><i></i><i></i><i></i><div class="url">lks.mirea.ru/schedule</div></div>
+      <div class="bd contain"><img src="assets/image-17-2.png" alt="Расписание группы студента" loading="eager" decoding="sync"></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Поиск по преподавателю / аудитории</strong><span class="spacer"></span>/api/mirea-schedule/search</div>
+  <div class="foot"><strong>Расписание своей группы</strong><span class="spacer"></span>/mirea-schedule/group/my/planning</div>
 </section>
 
 <section data-screen-label="27 ЛКС Запись — выбор слота">
@@ -746,7 +747,7 @@
       <div class="what">ИСТОРИЯ</div>
       <h3>Все мои пересдачи и их статусы</h3>
       <p class="lead">Простая таблица: дисциплина, дата, статус. Цветовой раскраски нет — статусы текстовые, читаемые с первого взгляда.</p>
-      <ul class="bullets"><li><code>enrolled</code> · «Записан», ждём пересдачу</li><li><code>completed</code> · оценка получена</li><li><code>absent</code> · «Не явился», фиксируется в аудите</li><li>Источник: <code>GET /api/enrollments/my</code></li></ul>
+      <ul class="bullets"><li><code>записан</code> · ждём пересдачу</li><li><code>завершено</code> · оценка получена</li><li><code>не явился</code> · фиксируется в аудите</li><li>Источник: <code>GET /api/enrollments/my</code></li></ul>
       <div class="stamp"><div class="step-dot">Σ</div><div>3 возможных статуса</div></div>
     </div></div>
   </div>
@@ -789,10 +790,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Доступность — список интервалов</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -804,11 +805,11 @@
       <div class="what">ШАГ 0 · ВХОД В ЦИКЛ</div>
       <h3>Преподаватель отмечает свободное время</h3>
       <p class="lead">Это стартовая точка процесса. Без указания доступности кафедра не сможет создать черновик слота.</p>
-      <ul class="bullets"><li>Список интервалов с фильтром по неделе</li><li>Видно занятые часы из расписания МИРЭА</li><li>Один клик — открыть форму добавления</li></ul>
+      <ul class="bullets"><li>Список добавленных интервалов доступности</li><li>Дата, время начала и конца каждого интервала</li><li>Кнопка добавить новый интервал</li></ul>
       <div class="stamp"><div class="step-dot">1</div><div>Доступность · просмотр</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>TeacherAvailability</strong><span class="spacer"></span>старт цикла пересдачи</div>
+  <div class="foot"><strong>Доступность преподавателя</strong><span class="spacer"></span>старт цикла пересдачи</div>
 </section>
 
 <section data-screen-label="ЛКП Преподаватель — доступность (редактирование)">
@@ -816,10 +817,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Доступность — форма интервала</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
@@ -843,10 +844,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Расписание — занятия</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -870,18 +871,18 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Расписание со слотами пересдач</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
       <div class="what">ПЕРЕСДАЧИ</div>
       <h3>Те же даты, плюс свои пересдачи</h3>
-      <p class="lead">Слоты пересдач помечены отдельным цветом, по клику открывается список записавшихся студентов.</p>
-      <ul class="bullets"><li>Свои слоты подсвечены бирюзовым</li><li>Кол-во записавшихся прямо в ячейке</li><li>Кнопка «Провести пересдачу»</li></ul>
+      <p class="lead">Слоты пересдач отображаются поверх обычных пар отдельным блоком — преподаватель сразу видит всю загруженность в одном виде.</p>
+      <ul class="bullets"><li>Свои слоты выделены отдельным цветом</li><li>Видны дисциплина, аудитория и статус слота</li><li>Переход к деталям слота по клику</li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Расписание + пересдачи</div></div>
     </div>
     <div class="browser">
@@ -897,10 +898,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Список ближайших пересдач</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -911,8 +912,8 @@
     <div class="shot-side">
       <div class="what">СПИСОК</div>
       <h3>Все мои пересдачи в одном экране</h3>
-      <p class="lead">Фильтр «требуют внимания» показывает слоты, у которых пора зафиксировать результат.</p>
-      <ul class="bullets"><li>Сортировка по дате и статусу</li><li>Фильтр «требуют внимания»</li><li>Быстрый переход к проведению</li></ul>
+      <p class="lead">Все слоты преподавателя в одном списке: дисциплина, дата, аудитория и текущий статус. Видно что запланировано, что уже прошло и что ещё ждёт.</p>
+      <ul class="bullets"><li>Статусы: <code>провести</code> · <code>завершено</code></li><li>Дата, дисциплина, аудитория по каждому слоту</li><li>Переход к оцениванию из карточки слота</li></ul>
       <div class="stamp"><div class="step-dot">★</div><div>Дашборд преподавателя</div></div>
     </div></div>
   </div>
@@ -924,10 +925,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Проведение · шаг 1 — открыть слот</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -938,8 +939,8 @@
     <div class="shot-side">
       <div class="what">ШАГ 1</div>
       <h3>Открыть слот в день пересдачи</h3>
-      <p class="lead">В карточке — список записавшихся, аудитория и время. Если кто-то не пришёл, его помечают как absent.</p>
-      <ul class="bullets"><li>Видно количество мест: 1/20</li><li>Список студентов с группой и долгом</li><li>Кнопка «Начать оценивание»</li></ul>
+      <p class="lead">В карточке — список записавшихся студентов, аудитория и время. Если студент не явился, его отмечают «Не явился».</p>
+      <ul class="bullets"><li>Список студентов с группой и дисциплиной</li><li>Отметка явки по каждому</li><li>Кнопка «Зафиксировать»</li></ul>
       <div class="stamp"><div class="step-dot">1</div><div>Шаг 1 из 3</div></div>
     </div></div>
   </div>
@@ -951,18 +952,18 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Проведение · шаг 2 — оценка</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
       <div class="what">ШАГ 2</div>
       <h3>Оценка и фиксация явки</h3>
-      <p class="lead">Преподаватель выставляет оценку 2–5, отмечает явку, добавляет комментарий.</p>
-      <ul class="bullets"><li>Оценка 2–5 или «Не явился»</li><li>Поле комментария (опционально)</li><li><code>POST /results</code> на каждого студента</li></ul>
+      <p class="lead">Преподаватель выставляет оценку 2–5 и отмечает явку по каждому студенту.</p>
+      <ul class="bullets"><li>Оценка 2–5 или «Не явился»</li><li>Чекбокс passed — закрывает долг при BR-03</li><li><code>POST /results</code> на каждого студента</li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Шаг 2 из 3</div></div>
     </div>
     <div class="browser">
@@ -978,10 +979,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · TEACHER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ПРЕПОДАВАТЕЛЬ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · teacher</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · преподаватель</div>
     <h2 class="title sm" style="margin-bottom:18px">Проведение · шаг 3 — фиксация</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -992,7 +993,7 @@
     <div class="shot-side">
       <div class="what">ШАГ 3</div>
       <h3>Зафиксировать результат</h3>
-      <p class="lead">По кнопке «Зафиксировать»: при оценке ≥ 3 долг автоматически закрывается (BR-03), запись становится <code>completed</code>, всё пишется в аудит.</p>
+      <p class="lead">По кнопке «Зафиксировать»: при passed = true долг автоматически закрывается (BR-03), запись становится <code>completed</code>, всё пишется в аудит.</p>
       <ul class="bullets"><li>BR-03 — авто-закрытие долга</li><li>Статус enrollment → <code>completed</code></li><li>AuditLog action = RECORD_RESULT</li></ul>
       <div class="stamp"><div class="step-dot">3</div><div>Шаг 3 из 3</div></div>
     </div></div>
@@ -1005,10 +1006,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_WORKER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · СОТР. КАФЕДРЫ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_worker</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · сотр. кафедры</div>
     <h2 class="title sm" style="margin-bottom:18px">Черновики слотов — список</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -1032,10 +1033,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_WORKER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · СОТР. КАФЕДРЫ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_worker</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · сотр. кафедры</div>
     <h2 class="title sm" style="margin-bottom:18px">Черновик — заполнение полей</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
@@ -1043,7 +1044,7 @@
       <div class="what">ШАГ 2</div>
       <h3>Дисциплина, преподаватель, дата</h3>
       <p class="lead">Автозаполнение: при выборе преподавателя подгружаются его доступные интервалы; аудитории фильтруются по корпусу.</p>
-      <ul class="bullets"><li>Подсказки по преподавателям</li><li>Поиск аудитории по корпусу/этажу</li><li>Проверка max_students против правил</li></ul>
+      <ul class="bullets"><li>Подсказки по преподавателям</li><li>Поиск аудитории по корпусу</li><li>Проверка max_students против правил</li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Шаг 2 · Форма</div></div>
     </div>
     <div class="browser">
@@ -1059,26 +1060,26 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_WORKER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · СОТР. КАФЕДРЫ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_worker</div>
-    <h2 class="title sm" style="margin-bottom:18px">Серверная проверка конфликтов</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · сотр. кафедры</div>
+    <h2 class="title sm" style="margin-bottom:18px">Автозаполнение преподавателей по дисциплине</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
     <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/dept/drafts/new?conflict</div></div>
-      <div class="bd contain"><img src="assets/image-25-3.png" alt="Проверка конфликтов в реальном времени" loading="eager" decoding="sync"></div>
+      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/schedule/draft/new</div></div>
+      <div class="bd contain"><img src="assets/image-25-3.png" alt="Автозаполнение преподавателей по дисциплине" loading="eager" decoding="sync"></div>
     </div>
     <div class="shot-side">
-      <div class="what">ШАГ 3</div>
-      <h3>Проверка конфликтов в реальном времени</h3>
-      <p class="lead">При сохранении сервер сверяет дату/аудиторию с iCal-фидом и существующими слотами. Если есть конфликт — 400 c описанием.</p>
-      <ul class="bullets"><li>Проверка <code>VEVENT</code> в iCal</li><li>Поиск пересечений по аудитории</li><li>Подсказка: «занят с 16:20 до 17:50»</li></ul>
-      <div class="stamp"><div class="step-dot">3</div><div>Шаг 3 · Конфликты</div></div>
+      <div class="what">ШАГ 2</div>
+      <h3>Дисциплина выбрана — преподаватели подтянуты</h3>
+      <p class="lead">При вводе дисциплины система делает запрос <code>GET /mirea-schedule/disciplines/:id/teachers</code> и мгновенно возвращает список преподавателей, которые её ведут по данным МИРЭА.</p>
+      <ul class="bullets"><li>Запрос к schedule-of.mirea.ru · фильтрация на сервере</li><li>Дропдаун с ФИО — Ладанова Е.О., Морозов В.А.</li><li>Выбор преподавателя активирует окна доступности</li></ul>
+      <div class="stamp"><div class="step-dot">2</div><div>Шаг 2 · Преподаватель</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Конфликты iCal</strong><span class="spacer"></span>400 Bad Request с описанием</div>
+  <div class="foot"><strong>Автозаполнение преподавателей</strong><span class="spacer"></span>GET /mirea-schedule/disciplines/:id/teachers</div>
 </section>
 
 <section data-screen-label="ЛКП Кафедра — черновики, отправка 1">
@@ -1086,80 +1087,54 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_WORKER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · СОТР. КАФЕДРЫ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_worker</div>
-    <h2 class="title sm" style="margin-bottom:18px">Сохранение черновика</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · сотр. кафедры</div>
+    <h2 class="title sm" style="margin-bottom:18px">Выбор аудитории — данные из МИРЭА</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
     <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/dept/drafts/new/saved</div></div>
-      <div class="bd contain"><img src="assets/image-26-1.png" alt="Черновик сохранён" loading="eager" decoding="sync"></div>
+      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/schedule/draft/new</div></div>
+      <div class="bd contain"><img src="assets/image-26-1.png" alt="Выбор аудитории и доступности преподавателя" loading="eager" decoding="sync"></div>
     </div>
     <div class="shot-side">
-      <div class="what">ШАГ 4</div>
-      <h3>Черновик сохранён</h3>
-      <p class="lead">После успешной валидации слот появляется в общем списке черновиков со статусом <code>draft</code>.</p>
-      <ul class="bullets"><li>Сразу видно в общем списке</li><li>Можно редактировать пока draft</li><li>Аудит — action = CREATE_DRAFT_SLOT</li></ul>
-      <div class="stamp"><div class="step-dot">4</div><div>Шаг 4 · Сохранение</div></div>
+      <div class="what">ШАГ 3</div>
+      <h3>Аудитория и дата из доступности</h3>
+      <p class="lead">После выбора преподавателя отображаются его окна доступности (14.05, 20.05, 28.05, 04.06). Выбранная дата + пара активирует поиск аудиторий через API МИРЭА.</p>
+      <ul class="bullets"><li>Окна из <code>TeacherAvailability</code></li><li>Привязка к стандартным парам университета</li><li>Поиск аудитории фильтрует по корпусу</li></ul>
+      <div class="stamp"><div class="step-dot">3</div><div>Шаг 3 · Аудитория</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Черновик сохранён</strong><span class="spacer"></span>status=draft</div>
+  <div class="foot"><strong>Выбор аудитории</strong><span class="spacer"></span>TeacherAvailability + API МИРЭА</div>
 </section>
 
-<section data-screen-label="ЛКП Кафедра — черновики, проверка">
-  
+
+<section data-screen-label="ЛКП Кафедра — расписание преподавателей">
+
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_WORKER</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · СОТР. КАФЕДРЫ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_worker</div>
-    <h2 class="title sm" style="margin-bottom:18px">Сводка перед отправкой</h2>
-    <div class="rule" style="margin-bottom:24px"></div>
-    <div class="shot-split rev">
-    <div class="shot-side">
-      <div class="what">ШАГ 5</div>
-      <h3>Финальная сводка</h3>
-      <p class="lead">Перед отправкой завкафедрой сотрудник видит полную карточку: преподаватель, доступность, аудитория, ожидаемые студенты.</p>
-      <ul class="bullets"><li>Сводка по полям</li><li>Превью карточки в ЛКС</li><li>История действий по черновику</li></ul>
-      <div class="stamp"><div class="step-dot">5</div><div>Шаг 5 · Сводка</div></div>
-    </div>
-    <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/dept/drafts/#7/review</div></div>
-      <div class="bd contain"><img src="assets/image-26-2.png" alt="Финальная сводка" loading="eager" decoding="sync"></div>
-    </div></div>
-  </div>
-  <div class="foot"><strong>Финальная проверка</strong><span class="spacer"></span>перед отправкой</div>
-</section>
-
-<section data-screen-label="ЛКП Кафедра — черновики, отправка завкафедрой">
-  
-  <div class="bar">
-    <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
-    <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_WORKER</span><span class="pg">— / —</span></div>
-  </div>
-  <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_worker</div>
-    <h2 class="title sm" style="margin-bottom:18px">Отправка на утверждение</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · сотр. кафедры</div>
+    <h2 class="title sm" style="margin-bottom:18px">Расписание преподавателей — для планирования</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
     <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/dept/drafts/#7/submit</div></div>
-      <div class="bd contain"><img src="assets/image-26-3.png" alt="Передача завкафедрой" loading="eager" decoding="sync"></div>
+      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/schedule/teachers</div></div>
+      <div class="bd contain"><img src="assets/image-26-3.png" alt="Расписание преподавателей кафедры" loading="eager" decoding="sync"></div>
     </div>
     <div class="shot-side">
-      <div class="what">ШАГ 6</div>
-      <h3>Передача завкафедрой</h3>
-      <p class="lead">Кнопка «Отправить на утверждение» меняет статус и кладёт уведомление в очередь завкафедры. С этого момента редактировать нельзя.</p>
-      <ul class="bullets"><li>Статус: <code>draft → pending</code></li><li>Уведомление завкафедрой</li><li>Запись в AuditLog · SUBMIT_DRAFT</li></ul>
-      <div class="stamp"><div class="step-dot">6</div><div>Шаг 6 · Передача</div></div>
+      <div class="what">ПЛАНИРОВАНИЕ</div>
+      <h3>Занятость преподавателей — до создания черновика</h3>
+      <p class="lead">Сотрудник кафедры видит расписание любого преподавателя по неделям — пары и слоты пересдач в одном виде. Помогает выбрать незанятое окно перед созданием черновика.</p>
+      <ul class="bullets"><li>Выбор преподавателя из списка кафедры</li><li>Недельный календарь с парами и пересдачами</li><li>Источник — schedule-of.mirea.ru + <code>RetakeSlot</code></li></ul>
+      <div class="stamp"><div class="step-dot">→</div><div>Расписание преподавателей</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Передано завкафедрой</strong><span class="spacer"></span>status=pending</div>
+  <div class="foot"><strong>Расписание преподавателей</strong><span class="spacer"></span>сотр. кафедры · /schedule/teachers</div>
 </section>
 
 <section data-screen-label="ЛКП Завкафедрой — список">
@@ -1167,10 +1142,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_HEAD</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ЗАВ. КАФЕДРОЙ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_head</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · зав. кафедрой</div>
     <h2 class="title sm" style="margin-bottom:18px">Список на утверждение</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -1182,11 +1157,11 @@
       <div class="what">ОЧЕРЕДЬ</div>
       <h3>Что ждёт утверждения</h3>
       <p class="lead">Список черновиков от сотрудников кафедры с приоритетом по дате пересдачи.</p>
-      <ul class="bullets"><li>Сортировка по deadline-у пересдачи</li><li>Фильтр по преподавателю</li><li>Массовые действия — approve/reject</li></ul>
+      <ul class="bullets"><li>Дисциплина, преподаватель, дата и аудитория</li><li>Статус каждого черновика</li><li>Поштучное утверждение / отклонение</li></ul>
       <div class="stamp"><div class="step-dot">1</div><div>Шаг 1 · Очередь</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Очередь утверждения</strong><span class="spacer"></span>status=pending</div>
+  <div class="foot"><strong>Очередь утверждения</strong><span class="spacer"></span>status=draft</div>
 </section>
 
 <section data-screen-label="ЛКП Завкафедрой — детали слота">
@@ -1194,23 +1169,23 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · DEPT_HEAD</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · ЗАВ. КАФЕДРОЙ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · dept_head</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · зав. кафедрой</div>
     <h2 class="title sm" style="margin-bottom:18px">Утверждение или отклонение</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
       <div class="what">РЕШЕНИЕ</div>
-      <h3>Approve / Reject с комментарием</h3>
-      <p class="lead">В карточке всё для решения: преподаватель, нагрузка, конфликты, история правок. Отклонение — с обязательным комментарием.</p>
-      <ul class="bullets"><li>Статусы: <code>approved</code> · <code>rejected</code></li><li>Комментарий — виден кафедре</li><li>AuditLog · APPROVE/REJECT_DRAFT</li></ul>
+      <h3>Карточка слота — утвердить или отклонить</h3>
+      <p class="lead">Карточка показывает дисциплину, преподавателя, дату и аудиторию — кнопки «Утвердить» / «Отклонить».</p>
+      <ul class="bullets"><li>Статусы: <code>утверждено</code> · <code>отклонено</code></li><li>Журнал аудита · APPROVE_SLOT / REJECT_SLOT</li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Шаг 2 · Решение</div></div>
     </div>
     <div class="browser">
       <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/dept-head/approvals/#7</div></div>
-      <div class="bd contain"><img src="assets/image-27-2.png" alt="Approve / Reject с комментарием" loading="eager" decoding="sync"></div>
+      <div class="bd contain"><img src="assets/image-27-2.png" alt="Утвердить или отклонить" loading="eager" decoding="sync"></div>
     </div></div>
   </div>
   <div class="foot"><strong>Утверждение/отклонение</strong><span class="spacer"></span>фиксируется в аудите</div>
@@ -1221,10 +1196,10 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ACADEMIC_OFFICE</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · УЧЕБНЫЙ ОТДЕЛ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · academic_office</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · учебный отдел</div>
     <h2 class="title sm" style="margin-bottom:18px">Публикация расписания</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -1235,8 +1210,8 @@
     <div class="shot-side">
       <div class="what">ПУБЛИКАЦИЯ</div>
       <h3>Готовые к публикации слоты</h3>
-      <p class="lead">Учебный отдел просматривает утверждённые слоты по факультетам и публикует их пакетом или поштучно.</p>
-      <ul class="bullets"><li>Группировка по неделям</li><li>Превью того, что увидит студент</li><li>Массовая публикация</li></ul>
+      <p class="lead">Учебный отдел видит список утверждённых слотов и публикует каждый поштучно.</p>
+      <ul class="bullets"><li>Дисциплина, преподаватель, дата и аудитория</li><li>Поштучная публикация через <code>PATCH /:id/publish</code></li><li>После публикации слот виден студентам в ЛКС</li></ul>
       <div class="stamp"><div class="step-dot">1</div><div>Шаг 1 · Список</div></div>
     </div></div>
   </div>
@@ -1248,18 +1223,18 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ACADEMIC_OFFICE</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · УЧЕБНЫЙ ОТДЕЛ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · academic_office</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · учебный отдел</div>
     <h2 class="title sm" style="margin-bottom:18px">Подтверждение публикации</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
       <div class="what">ШАГ 2</div>
-      <h3>Опубликовано — видно студентам</h3>
-      <p class="lead">После публикации слоты становятся доступны студентам в ЛКС. Изменения шлются в систему уведомлений.</p>
-      <ul class="bullets"><li>Запись в AuditLog · PUBLISH_SLOT</li><li>Slot.status → <code>published</code></li><li>Уведомление студентов по группе</li></ul>
+      <h3>Подтверждение перед публикацией</h3>
+      <p class="lead">Перед публикацией система показывает модальное окно с вопросом «Вы уверены?». После подтверждения слот уходит в статус <code>published</code>.</p>
+      <ul class="bullets"><li>Модальное окно с подтверждением действия</li><li>Запись в AuditLog · PUBLISH_SLOT</li><li>Слот становится виден студентам в ЛКС</li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Шаг 2 · Подтверждение</div></div>
     </div>
     <div class="browser">
@@ -1275,11 +1250,11 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ACADEMIC_OFFICE</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · УЧЕБНЫЙ ОТДЕЛ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · academic_office</div>
-    <h2 class="title sm" style="margin-bottom:18px">Ручное зачисление — поиск студента</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · учебный отдел</div>
+    <h2 class="title sm" style="margin-bottom:18px">Ручная выдача допуска — поиск студента</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
     <div class="browser">
@@ -1297,16 +1272,16 @@
   <div class="foot"><strong>Ручная запись</strong><span class="spacer"></span>source = manual</div>
 </section>
 
-<section data-screen-label="ЛКП Учебный отдел — ручная запись 2">
+<section data-screen-label="ЛКП Учебный отдел — выдача допуска, выбор слота">
   
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ACADEMIC_OFFICE</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · УЧЕБНЫЙ ОТДЕЛ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · academic_office</div>
-    <h2 class="title sm" style="margin-bottom:18px">Ручное зачисление — выбор слота</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · учебный отдел</div>
+    <h2 class="title sm" style="margin-bottom:18px">Ручная выдача допуска — выбор слота</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
@@ -1324,16 +1299,16 @@
   <div class="foot"><strong>Выбор слота</strong><span class="spacer"></span>возможен override BR-01</div>
 </section>
 
-<section data-screen-label="ЛКП Учебный отдел — ручная запись 3">
+<section data-screen-label="ЛКП Учебный отдел — выдача допуска, подтверждение">
   
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ACADEMIC_OFFICE</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · УЧЕБНЫЙ ОТДЕЛ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · academic_office</div>
-    <h2 class="title sm" style="margin-bottom:18px">Ручное зачисление — подтверждение</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · учебный отдел</div>
+    <h2 class="title sm" style="margin-bottom:18px">Ручная выдача допуска — подтверждение</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
     <div class="browser">
@@ -1343,12 +1318,12 @@
     <div class="shot-side">
       <div class="what">ШАГ 3</div>
       <h3>Подтверждение и аудит</h3>
-      <p class="lead">Действие фиксируется с указанием причины. Студент получает уведомление, как при обычной записи.</p>
-      <ul class="bullets"><li><code>source = manual</code></li><li>Обязательная причина-комментарий</li><li>AuditLog · MANUAL_ENROLL</li></ul>
+      <p class="lead">Действие записывается в журнал аудита с идентификатором исполнителя и временной меткой. Студент появляется в списке записанных.</p>
+      <ul class="bullets"><li><code>source = manual</code></li><li>BR-01 обходится автоматически — без запроса причины</li><li>Журнал аудита · MANUAL_ENROLL</li></ul>
       <div class="stamp"><div class="step-dot">3</div><div>Шаг 3 · Подтверждение</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Запись создана</strong><span class="spacer"></span>причина в AuditLog</div>
+  <div class="foot"><strong>Запись создана</strong><span class="spacer"></span>причина в журнале аудита</div>
 </section>
 
 <section data-screen-label="ЛКП Админ — пользователи, список">
@@ -1359,7 +1334,7 @@
     <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
     <h2 class="title sm" style="margin-bottom:18px">Управление пользователями</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -1370,12 +1345,12 @@
     <div class="shot-side">
       <div class="what">УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ</div>
       <h3>Все аккаунты и роли</h3>
-      <p class="lead">Видны все пользователи: ФИО, роль, источник (SSO/локальный), последний вход, soft-deleted.</p>
-      <ul class="bullets"><li>Фильтр по роли и статусу</li><li>Поиск по email и mireaSsoId</li><li>Soft delete с возможностью восстановления</li></ul>
+      <p class="lead">Видны все пользователи: ФИО, роль, источник (SSO/локальный), последний вход, мягкое удаление.</p>
+      <ul class="bullets"><li>Поиск по ФИО, email и mireaSsoId</li><li>Мягкое удаление · поле <code>deletedAt</code></li></ul>
       <div class="stamp"><div class="step-dot">1</div><div>Список пользователей</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Список пользователей</strong><span class="spacer"></span>soft delete · история</div>
+  <div class="foot"><strong>Список пользователей</strong><span class="spacer"></span>мягкое удаление · история</div>
 </section>
 
 <section data-screen-label="ЛКП Админ — пользователи, создание">
@@ -1386,7 +1361,7 @@
     <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
     <h2 class="title sm" style="margin-bottom:18px">Создание пользователя</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
@@ -1399,10 +1374,10 @@
     </div>
     <div class="browser">
       <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/users/new</div></div>
-      <div class="bd contain"><img src="assets/image-30-2.png" alt="Локальный пользователь или сопоставление с SSO" loading="eager" decoding="sync"></div>
+      <div class="bd contain"><img src="assets/image-30-3.png" alt="Локальный пользователь или сопоставление с SSO" loading="eager" decoding="sync"></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Создание пользователя</strong><span class="spacer"></span>bcrypt · SSO mapping</div>
+  <div class="foot"><strong>Создание пользователя</strong><span class="spacer"></span>bcrypt · привязка SSO</div>
 </section>
 
 <section data-screen-label="ЛКП Админ — пользователи, редактирование роли">
@@ -1413,19 +1388,19 @@
     <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
     <h2 class="title sm" style="margin-bottom:18px">Редактирование пользователя</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
     <div class="browser">
       <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/users/#42</div></div>
-      <div class="bd contain"><img src="assets/image-30-3.png" alt="Смена роли и блокировка" loading="eager" decoding="sync"></div>
+      <div class="bd contain"><img src="assets/image-30-2.png" alt="Смена роли пользователя" loading="eager" decoding="sync"></div>
     </div>
     <div class="shot-side">
       <div class="what">РЕДАКТИРОВАНИЕ</div>
-      <h3>Смена роли и блокировка</h3>
-      <p class="lead">Любое изменение роли — это событие в AuditLog. История ролей хранится без удаления.</p>
-      <ul class="bullets"><li>Запись в AuditLog · USER_ROLE_CHANGE</li><li>История изменений пользователя</li><li>Блокировка без удаления</li></ul>
+      <h3>Смена роли</h3>
+      <p class="lead">Дропдаун с 6 ролями: Студент, Преподаватель, Работник кафедры, Начальник кафедры, Учебный отдел, Администратор. Изменение — мгновенно через PATCH.</p>
+      <ul class="bullets"><li>6 ролей в дропдауне</li><li>Soft delete — пользователь скрывается, но не удаляется</li><li>Изменения фиксируются в AuditLog</li></ul>
       <div class="stamp"><div class="step-dot">3</div><div>Изменение пользователя</div></div>
     </div></div>
   </div>
@@ -1440,7 +1415,7 @@
     <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
     <h2 class="title sm" style="margin-bottom:18px">Управление долгами — список</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
@@ -1460,111 +1435,85 @@
 </section>
 
 <section data-screen-label="ЛКП Админ — долги, создание">
-  
+
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
     <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
     <h2 class="title sm" style="margin-bottom:18px">Создание долга</h2>
     <div class="rule" style="margin-bottom:24px"></div>
-    <div class="shot-split rev">
+    <div class="shot-split">
+    <div class="browser">
+      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/debts/new</div></div>
+      <div class="bd contain"><img src="assets/image-31-3.png" alt="Создание учебного долга" loading="eager" decoding="sync"></div>
+    </div>
     <div class="shot-side">
       <div class="what">СОЗДАНИЕ</div>
       <h3>Учебный долг вручную</h3>
-      <p class="lead">Поля: дисциплина, тип (зачёт / экзамен), семестр, дедлайн. Сохраняется в таблицу Debt.</p>
-      <ul class="bullets"><li>Дисциплина из справочника</li><li>Тип долга и кол-во ECTS</li><li>Дедлайн — по умолчанию 21 день</li></ul>
+      <p class="lead">Поля: дисциплина, тип (зачёт / экзамен), группа, семестр, дата задолженности, статус. Сохраняется в таблицу Debt.</p>
+      <ul class="bullets"><li>Дисциплина из справочника · тип: зачёт / экзамен</li><li>Группа · семестр · дата задолженности</li><li>Статус: <code>active</code> / <code>closed</code> / <code>unresolved</code></li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Форма создания долга</div></div>
-    </div>
-    <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/debts/new</div></div>
-      <div class="bd contain"><img src="assets/image-31-2.png" alt="Учебный долг вручную" loading="eager" decoding="sync"></div>
     </div></div>
   </div>
   <div class="foot"><strong>Создание долга</strong><span class="spacer"></span>таблица Debt</div>
 </section>
 
-<section data-screen-label="ЛКП Админ — долги, смена статуса">
-  
-  <div class="bar">
-    <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
-    <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
-  </div>
-  <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
-    <h2 class="title sm" style="margin-bottom:18px">Смена статуса долга</h2>
-    <div class="rule" style="margin-bottom:24px"></div>
-    <div class="shot-split">
-    <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/debts/#7/status</div></div>
-      <div class="bd contain"><img src="assets/image-31-3.png" alt="active / closed / unresolved" loading="eager" decoding="sync"></div>
-    </div>
-    <div class="shot-side">
-      <div class="what">СТАТУС</div>
-      <h3>active / closed / unresolved</h3>
-      <p class="lead">Закрыть долг вручную можно только с обязательным комментарием. Авто-закрытие — через BR-03 при оценке ≥ 3.</p>
-      <ul class="bullets"><li>Только админ может закрыть вручную</li><li>Комментарий обязателен</li><li>Запись в AuditLog</li></ul>
-      <div class="stamp"><div class="step-dot">3</div><div>Смена статуса</div></div>
-    </div></div>
-  </div>
-  <div class="foot"><strong>Изменение статуса</strong><span class="spacer"></span>AuditLog · DEBT_STATUS</div>
-</section>
+<section data-screen-label="ЛКП Админ — долги, управление">
 
-<section data-screen-label="ЛКП Админ — долги, история">
-  
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
     <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
-    <h2 class="title sm" style="margin-bottom:18px">История долга</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
+    <h2 class="title sm" style="margin-bottom:18px">Управление задолженностью</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
-      <div class="what">ИСТОРИЯ</div>
-      <h3>Полная история по долгу</h3>
-      <p class="lead">Видно всё: создание, попытки пересдачи, оценки, изменения статуса. Каждое событие — с user_id и timestamp.</p>
-      <ul class="bullets"><li>Кто, когда, что изменил</li><li>Связанные enrollments и results</li><li>Экспорт CSV / JSON</li></ul>
-      <div class="stamp"><div class="step-dot">4</div><div>История долга</div></div>
+      <div class="what">УПРАВЛЕНИЕ</div>
+      <h3>Карточка задолженности</h3>
+      <p class="lead">Отображаются все данные: предмет, тип (экзамен / зачёт), семестр, дата. Доступна смена статуса, запись на слот пересдачи или удаление задолженности.</p>
+      <ul class="bullets"><li>Предмет · тип (экзамен / зачёт) · семестр · дата</li><li>Смена статуса: <code>активна</code> / <code>закрыта</code> / <code>не закрыта</code></li><li>Кнопка записи в слот пересдачи · удаление</li></ul>
+      <div class="stamp"><div class="step-dot">3</div><div>Управление долгом</div></div>
     </div>
     <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/debts/#7/history</div></div>
-      <div class="bd contain"><img src="assets/image-31-4.png" alt="Полная история по долгу" loading="eager" decoding="sync"></div>
+      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/debts/#7</div></div>
+      <div class="bd contain"><img src="assets/image-31-4.png" alt="Управление задолженностью" loading="eager" decoding="sync"></div>
     </div></div>
   </div>
-  <div class="foot"><strong>История</strong><span class="spacer"></span>AuditLog по долгу</div>
+  <div class="foot"><strong>Управление задолженностью</strong><span class="spacer"></span>статус · запись · удаление</div>
 </section>
 
-<section data-screen-label="ЛКП Админ — запись на пересдачу">
-  
+
+<section data-screen-label="ЛКП Админ — ручная выдача допуска на пересдачу">
+
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · АДМИНИСТРАТОР</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
-    <h2 class="title sm" style="margin-bottom:18px">Запись от имени любого студента</h2>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
+    <h2 class="title sm" style="margin-bottom:18px">Ручная выдача допуска на пересдачу</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split">
     <div class="browser">
-      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admin/enroll</div></div>
-      <div class="bd contain"><img src="assets/image-32-1.png" alt="Запись минуя ограничения" loading="eager" decoding="sync"></div>
+      <div class="bb"><i></i><i></i><i></i><div class="url">lkp.mirea.ru/admissions</div></div>
+      <div class="bd contain"><img src="assets/image-32-1.png" alt="Ручная выдача допуска на пересдачу" loading="eager" decoding="sync"></div>
     </div>
     <div class="shot-side">
-      <div class="what">СПЕЦ-РЕЖИМ</div>
-      <h3>Запись минуя ограничения</h3>
-      <p class="lead">Админ может записать любого студента на любой слот, в том числе с нарушением BR-01 и при переполнении.</p>
-      <ul class="bullets"><li>Прыжок через BR-01 и max_students</li><li>Только с указанием причины</li><li><code>source = manual</code> + <code>by_admin</code></li></ul>
-      <div class="stamp"><div class="step-dot">1</div><div>Админ-запись</div></div>
+      <div class="what">РУЧНАЯ ВЫДАЧА ДОПУСКА</div>
+      <h3>Администратор выдаёт допуск вручную</h3>
+      <p class="lead">Когда студент пропустил срок записи, администратор использует <code>POST /enrollments/manual</code>. BR-01 обходится автоматически — без дополнительных условий.</p>
+      <ul class="bullets"><li><code>source = manual</code> — записывается в Enrollment</li><li>Проверка BR-01 пропускается для <code>source=manual</code></li><li>Действие фиксируется: Журнал аудита · MANUAL_ENROLL</li></ul>
+      <div class="stamp"><div class="step-dot">→</div><div>Выдача допуска</div></div>
     </div></div>
   </div>
-  <div class="foot"><strong>Запись админом</strong><span class="spacer"></span>override правил с причиной</div>
+  <div class="foot"><strong>Ручная выдача допуска</strong><span class="spacer"></span>POST /enrollments/manual · source=manual</div>
 </section>
 
 <section data-screen-label="ЛКП Админ — журнал аудита">
@@ -1572,18 +1521,18 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>ЛКП · ADMIN</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>ЛКП · АДМИНИСТРАТОР</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage" style="padding-bottom:32px">
-    <div class="eyebrow">Раздел 5 · ЛКП · admin</div>
+    <div class="eyebrow">Раздел 5 · ЛКП · администратор</div>
     <h2 class="title sm" style="margin-bottom:18px">Журнал аудита</h2>
     <div class="rule" style="margin-bottom:24px"></div>
     <div class="shot-split rev">
     <div class="shot-side">
-      <div class="what">AUDIT LOG</div>
+      <div class="what">ЖУРНАЛ АУДИТА</div>
       <h3>Каждое значимое действие — здесь</h3>
-      <p class="lead">Сортировка по времени, фильтры по пользователю, сущности, типу действия. Полный JSON payload.</p>
-      <ul class="bullets"><li><code>ENROLL</code> · <code>RECORD_RESULT</code> · <code>PUBLISH_SLOT</code></li><li><code>USER_ROLE_CHANGE</code> · <code>DEBT_STATUS</code></li><li>Экспорт CSV для отчётов учебной части</li></ul>
+      <p class="lead">Сортировка по времени, фильтры по пользователю, сущности, типу действия. Полный JSON-данные.</p>
+      <ul class="bullets"><li><code>ENROLL</code> · <code>MANUAL_ENROLL</code> · <code>RECORD_RESULT</code></li><li><code>CREATE_SLOT_DRAFT</code> · <code>APPROVE_SLOT</code> · <code>REJECT_SLOT</code> · <code>PUBLISH_SLOT</code></li><li><code>DELETE_SLOT_DRAFT</code> · <code>LOGIN</code></li></ul>
       <div class="stamp"><div class="step-dot">Σ</div><div>Журнал аудита</div></div>
     </div>
     <div class="browser">
@@ -1619,11 +1568,11 @@
       <thead>
         <tr>
           <th style="width:30%; text-align:left">Действие</th>
-          <th>student</th><th>teacher</th><th>dept_<br>worker</th><th>dept_<br>head</th><th>acad_<br>office</th><th>admin</th>
+          <th>студент</th><th>препод.</th><th>сотр.<br>каф.</th><th>зав.<br>каф.</th><th>уч.<br>отдел</th><th>админ</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Просмотр долгов</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Запись на пересдачу</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr><tr><td>Указать доступность</td><td class="n">—</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr><tr><td>Создать черновик слота</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="n">—</td><td class="y">✓</td></tr><tr><td>Утвердить черновик</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Опубликовать слот</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Ручная запись студента</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Внести результат</td><td class="n">—</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr><tr><td>Управление пользователями</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr><tr><td>Журнал аудита</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Просмотр долгов</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Запись на пересдачу</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr><tr><td>Указать доступность</td><td class="n">—</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr><tr><td>Создать черновик слота</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="n">—</td><td class="y">✓</td></tr><tr><td>Утвердить черновик</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Опубликовать слот</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Ручная запись студента</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td>Внести результат</td><td class="n">—</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr><tr><td>Управление пользователями</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr><tr><td>Журнал аудита</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
       </tbody>
     </table>
   </div>
@@ -1706,7 +1655,7 @@
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>DEPLOY</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>РАЗВЁРТЫВАНИЕ</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage">
     <div class="eyebrow">Раздел 6 · Технические аспекты</div>
@@ -1720,7 +1669,7 @@
           <li><b>pnpm install</b> · установка всех зависимостей monorepo</li>
           <li><b>pnpm dev</b> · Turbo запускает API + LKS + LKP параллельно</li>
           <li><b>API</b>: <code>localhost:4000/api</code></li>
-          <li><b>LKS</b>: <code>localhost:3000</code> · <b>LKP</b>: <code>localhost:3001</code></li>
+          <li><b>ЛКС</b>: <code>localhost:3000</code> · <b>ЛКП</b>: <code>localhost:3001</code></li>
           <li><b>pnpm build</b> · билд всех пакетов через Turbo</li>
           <li><b>pnpm lint</b> · ESLint по всему монорепо</li>
           <li><b>CORS</b>: <code>localhost:3000</code>, <code>localhost:3001</code></li>
@@ -1738,7 +1687,7 @@
         </ul>
         <div class="callout" style="margin-top:24px; font-size:18px">
           <small>Сиды данные</small>
-          15 студентов + 3 преподавателя + роли admin / office / dept_head / dept_worker — вход через вкладку «Локально», пароль <code>password123</code>
+          15 студентов + 3 преподавателя + роли администратора, учебного отдела, кафедры — вход через вкладку «Локально», пароль <code>password123</code>
         </div>
       </div>
     </div>
@@ -1769,7 +1718,7 @@
           <div class="bar-track compare-bar-track"><div class="compare-bar-fill" style="width:95%"></div></div>
         </div>
         <div class="compare-bar-item">
-          <div class="bar-label">Участников согласования <span class="asis-val">4 человека</span></div>
+          <div class="bar-label">Бумажная бюрократия <span class="asis-val">присутствует</span></div>
           <div class="bar-track compare-bar-track"><div class="compare-bar-fill" style="width:80%"></div></div>
         </div>
         <div class="compare-bar-item">
@@ -1793,7 +1742,7 @@
           <div class="bar-track compare-bar-track"><div class="compare-bar-fill" style="width:3%"></div></div>
         </div>
         <div class="compare-bar-item">
-          <div class="bar-label">Участников согласования <span class="tobe-val">0 (авто)</span></div>
+          <div class="bar-label">Бумажная бюрократия <span class="tobe-val">устранена</span></div>
           <div class="bar-track compare-bar-track"><div class="compare-bar-fill" style="width:4%"></div></div>
         </div>
         <div class="compare-bar-item">
@@ -1810,7 +1759,7 @@
       <div class="saving"><div class="sv">3×</div><div class="sl">меньше шагов процесса</div></div>
       <div class="saving"><div class="sv">100%</div><div class="sl">цифровой аудит всех действий</div></div>
       <div class="saving"><div class="sv">4</div><div class="sl">интеграции с МИРЭА</div></div>
-      <div class="saving"><div class="sv">6</div><div class="sl">ролей RBAC, 0 ручных согласований</div></div>
+      <div class="saving"><div class="sv">6</div><div class="sl">ролей RBAC, согласования без бумаги</div></div>
     </div>
   </div>
   <div class="foot"><strong>РТУ МИРЭА · Система пересдач</strong><span class="spacer"></span>Юшков А. Д. · УИБО-05-23 · 2026</div>
@@ -1851,7 +1800,7 @@
       </ul>
       <ul class="bullets tight">
         <li>Автопроверка конфликтов расписания через <b>VEVENT (iCal)</b></li>
-        <li><b>BR-01:</b> запись ≥ 12 ч до пересдачи. <b>BR-03:</b> автозакрытие долга при оценке ≥ 3</li>
+        <li><b>BR-01:</b> запись ≥ 12 ч до пересдачи. <b>BR-03:</b> автозакрытие долга при passed = true</li>
         <li>Полный <b>журнал аудита</b>, тестовые данные: 15 студентов + 3 преподавателя</li>
       </ul>
     </div>
@@ -1888,7 +1837,7 @@
           <li><b>Push / email уведомления</b> о новых слотах и результатах</li>
           <li><b>Аналитический дашборд</b> по пересдачам — KPI по кафедрам и дисциплинам</li>
           <li><b>Мобильное приложение</b> на React Native — общий пакет @mirea/types</li>
-          <li><b>Маркетплейс правил</b> для разных кафедр (BR-01 / BR-03 настраиваемые)</li>
+          <li><b>Настраиваемые правила</b> для разных кафедр (BR-01 / BR-03 настраиваемые)</li>
         </ul>
       </div>
     </div>
