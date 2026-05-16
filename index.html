@@ -198,8 +198,8 @@
   <div class="stage" style="padding:48px 96px 28px 96px">
     <div class="eyebrow">TO BE · Целевой процесс</div>
     <h2 class="title sm">Запись студента — серверная проверка и подтверждение</h2>
-    <p class="bpmn-lead">Сервер проверяет BR-01 (≥ 12 ч до пересдачи), отсутствие конфликтов в iCal и фиксирует запись с пометкой источника self.</p>
-    <div class="bpmn-tags"><span class="tag outline">BR-01 ≥ 12 ч</span><span class="tag outline">конфликты iCal</span><span class="tag outline">зачисления</span><span class="tag outline">журнал аудита</span></div>
+    <p class="bpmn-lead">Сервер проверяет BR-01 (≥ 12 ч), BR-02 (активный долг), BR-04 (свободные места), отсутствие конфликтов в iCal и фиксирует запись с пометкой источника self.</p>
+    <div class="bpmn-tags"><span class="tag outline">BR-01 ≥ 12 ч</span><span class="tag outline">BR-02 активный долг</span><span class="tag outline">BR-04 места</span><span class="tag outline">журнал аудита</span></div>
     <div class="bpmn-block">
       <img src="assets/image-7-2.jpeg" alt="Запись студента — серверная проверка и подтверждение" loading="eager" decoding="sync">
     </div>
@@ -236,8 +236,8 @@
   <div class="stage" style="padding:48px 96px 28px 96px">
     <div class="eyebrow">TO BE · Целевой процесс</div>
     <h2 class="title sm">Проведение пересдачи — фиксация результата</h2>
-    <p class="bpmn-lead">Результат проходит через сервис: при passed = true (преподаватель отмечает «Сдал») долг автоматически закрывается (BR-03), запись получает статус completed, действие пишется в AuditLog.</p>
-    <div class="bpmn-tags"><span class="tag outline">BR-03</span><span class="tag outline">auto close debt</span><span class="tag outline">completed</span><span class="tag outline">audit</span></div>
+    <p class="bpmn-lead">Результат проходит через сервис: passed=true → долг closed (BR-03); passed=false → долг unresolved (BR-03). Запись получает статус completed, действие пишется в журнал аудита.</p>
+    <div class="bpmn-tags"><span class="tag outline">BR-03</span><span class="tag outline">closed / unresolved</span><span class="tag outline">completed</span><span class="tag outline">журнал аудита</span></div>
     <div class="bpmn-block">
       <img src="assets/image-8-2.jpeg" alt="Проведение пересдачи — фиксация результата" loading="eager" decoding="sync">
     </div>
@@ -479,9 +479,11 @@
         <li><b>Расписание своей группы</b> — автоматически подгружается по группе студента</li>
       </ul>
       <ul class="bullets">
-        <li><b>BR-01:</b> запись возможна не позже чем за <b>12 часов</b> до начала</li>
+        <li><b>BR-01:</b> самостоятельная запись закрывается за 12 ч до начала; ручная — без ограничений</li>
+        <li><b>BR-02:</b> запись только при наличии активной задолженности по дисциплине</li>
+        <li><b>BR-03:</b> passed=true → долг <code>closed</code>; passed=false → долг <code>unresolved</code></li>
+        <li><b>BR-04:</b> число записавшихся не превышает maxStudents слота</li>
         <li><b>Просмотр своих записей</b> и статуса: <code>записан</code> · <code>завершено</code> · <code>не явился</code></li>
-        <li><b>BR-03:</b> автоматическое закрытие задолженности при сдаче</li>
       </ul>
     </div>
     <div class="kpi-row" style="margin-top:48px">
@@ -577,7 +579,7 @@
       <div class="what">ИСТОЧНИК 1</div>
       <h3>Авторитетные долги из БД системы</h3>
       <p class="lead">Записи Debt создаются учебным отделом и администратором. Кнопка «Записаться» сразу ведёт на ближайшие доступные слоты.</p>
-      <ul class="bullets"><li>Цветные статусы: <code>active</code> · <code>closed</code> · <code>unresolved</code></li><li>Авто-закрытие при passed = true (BR-03)</li></ul>
+      <ul class="bullets"><li>Цветные статусы: <code>active</code> · <code>closed</code> · <code>unresolved</code></li><li>BR-03: passed=true → closed; passed=false → unresolved</li></ul>
       <div class="stamp"><div class="step-dot">1</div><div>Источник 1 из 2</div></div>
     </div></div>
   </div>
@@ -707,7 +709,7 @@
     <div class="shot-side">
       <div class="what">ШАГ 2</div>
       <h3>Серверная проверка и подтверждение</h3>
-      <p class="lead">Перед записью сервер проверяет BR-01 (≥ 12 ч до начала), наличие мест и отсутствие дубликатов записи.</p>
+      <p class="lead">Перед записью сервер проверяет BR-01 (≥ 12 ч), BR-02 (активный долг по дисциплине), BR-04 (наличие мест) и отсутствие дубликатов.</p>
       <ul class="bullets"><li><code>POST /enrollments</code> · идемпотентно</li><li>422 Unprocessable, если правила нарушены</li><li>Транзакция в одном запросе</li></ul>
       <div class="stamp"><div class="step-dot">2</div><div>Шаг 2 из 3</div></div>
     </div>
@@ -1819,7 +1821,7 @@
       </ul>
       <ul class="bullets tight">
         <li>Автопроверка конфликтов расписания через <b>VEVENT (iCal)</b></li>
-        <li><b>BR-01:</b> запись ≥ 12 ч до пересдачи. <b>BR-03:</b> автозакрытие долга при passed = true</li>
+        <li><b>BR-01</b> (12 ч) · <b>BR-02</b> (активный долг) · <b>BR-03</b> (closed/unresolved) · <b>BR-04</b> (maxStudents)</li>
         <li>Полный <b>журнал аудита</b>, тестовые данные: 15 студентов + 3 преподавателя</li>
       </ul>
     </div>
@@ -1857,7 +1859,7 @@
           <li><b>Напоминания о пересдаче</b> — автоматическое уведомление студенту перед началом слота, на который он записан</li>
           <li><b>Аналитический дашборд</b> по пересдачам — KPI по кафедрам и дисциплинам</li>
           <li><b>Мобильное приложение</b> на React Native — общий пакет @mirea/types</li>
-          <li><b>Настраиваемые правила</b> для разных кафедр (BR-01 / BR-03 настраиваемые)</li>
+          <li><b>Настраиваемые правила</b> для разных кафедр (BR-01 / BR-02 / BR-03 / BR-04 настраиваемые)</li>
         </ul>
       </div>
     </div>
