@@ -321,12 +321,12 @@
   <div class="foot"><strong>BPMN · администрирование (2/2)</strong><span class="spacer"></span></div>
 </section>
 
-<section data-screen-label="16 Архитектура — Раздел">
+<section data-screen-label="17 Архитектура — Раздел">
   <div class="divider">
     <div class="lbl">Раздел 3</div>
     <div class="num">03</div>
     <h2 class="ttl">Архитектура<br>и технологический стек</h2>
-    <div class="dot-list"><span>NestJS · React · PostgreSQL</span><span>Монорепо</span><span>3 приложения</span><span>JWT + RBAC</span></div>
+    <div class="dot-list"><span>NestJS · React · PostgreSQL</span><span>Монолит</span><span>3 приложения</span><span>JWT + RBAC</span></div>
   </div>
 </section>
 
@@ -343,7 +343,7 @@
     <div class="rule"></div>
     
     <div class="kvlist">
-      <div class="k">Бэкенд</div><div class="v"><code>NestJS 10</code> · <code>TypeORM</code> · <code>PostgreSQL 17</code></div><div class="k">Фронтенд</div><div class="v"><code>React 18</code> · <code>Vite 5</code> · <code>Tailwind CSS 3</code></div><div class="k">Состояние / Данные</div><div class="v"><code>TanStack Query v5</code> · <code>Zustand</code></div><div class="k">Монорепо</div><div class="v"><code>pnpm workspaces</code> + <code>Turborepo</code></div><div class="k">Типизация</div><div class="v"><code>TypeScript 5</code>, общий пакет <code>@mirea/types</code></div><div class="k">UI-компоненты</div><div class="v">Общая библиотека <code>@mirea/ui</code></div><div class="k">Авторизация</div><div class="v"><code>JWT (passport-jwt)</code> + <code>@Roles()</code> + <code>RolesGuard</code></div><div class="k">HTTP-клиент</div><div class="v"><code>Axios</code> + interceptor — JWT, auto-logout при 401</div><div class="k">Интеграции</div><div class="v">Keycloak SSO · Pulse gRPC · lk.mirea.ru · schedule-of.mirea.ru</div>
+      <div class="k">Бэкенд</div><div class="v"><code>NestJS 10</code> · <code>TypeORM</code> · <code>PostgreSQL 17</code></div><div class="k">Фронтенд</div><div class="v"><code>React 18</code> · <code>Vite 5</code> · <code>Tailwind CSS 3</code></div><div class="k">Состояние / Данные</div><div class="v"><code>TanStack Query v5</code> · <code>Zustand</code></div><div class="k">Монолит</div><div class="v"><code>pnpm workspaces</code> + <code>Turborepo</code></div><div class="k">Типизация</div><div class="v"><code>TypeScript 5</code>, общий пакет <code>@mirea/types</code></div><div class="k">UI-компоненты</div><div class="v">Общая библиотека <code>@mirea/ui</code></div><div class="k">Авторизация</div><div class="v"><code>JWT (passport-jwt)</code> + <code>@Roles()</code> + <code>RolesGuard</code></div><div class="k">HTTP-клиент</div><div class="v"><code>Axios</code> + interceptor — JWT, auto-logout при 401</div><div class="k">Интеграции</div><div class="v">Keycloak SSO · Pulse gRPC · lk.mirea.ru · schedule-of.mirea.ru</div>
     </div>
   </div>
   <div class="foot"><strong>РТУ МИРЭА · Система пересдач</strong><span class="spacer"></span>Юшков А.Д. · Кинищук О.О. · Вольский А.В. · Воронин Д.А. · УИБО-05-23 · 2026</div>
@@ -416,16 +416,16 @@
   <div class="foot"><strong>РТУ МИРЭА · Система пересдач</strong><span class="spacer"></span>Юшков А.Д. · Кинищук О.О. · Вольский А.В. · Воронин Д.А. · УИБО-05-23 · 2026</div>
 </section>
 
-<section data-screen-label="18 Монорепозиторий">
+<section data-screen-label="18 Монолит">
   
   <div class="bar">
     <div class="brand"><div class="brand-mark">М</div><div class="brand-text">РТУ МИРЭА<small>СИСТЕМА ПЕРЕСДАЧ</small></div></div>
     <div class="spacer"></div>
-    <div class="meta"><span>МОНОРЕПО</span><span class="pg">— / —</span></div>
+    <div class="meta"><span>Монолит</span><span class="pg">— / —</span></div>
   </div>
   <div class="stage">
     <div class="eyebrow">Раздел 3 · Архитектура</div>
-    <h2 class="title">Монорепозиторий — Turborepo + pnpm workspaces</h2>
+    <h2 class="title">Монолит — Turborepo + pnpm workspaces</h2>
     <div class="rule"></div>
     
     <div class="grid-2">
@@ -1690,7 +1690,7 @@
           <li><b>API</b>: <code>localhost:4000/api</code></li>
           <li><b>ЛКС</b>: <code>localhost:3000</code> · <b>ЛКП</b>: <code>localhost:3001</code></li>
           <li><b>pnpm build</b> · билд всех пакетов через Turbo</li>
-          <li><b>pnpm lint</b> · ESLint по всему монорепо</li>
+          <li><b>pnpm lint</b> · ESLint по всему Монолит</li>
           <li><b>CORS</b>: <code>localhost:3000</code>, <code>localhost:3001</code></li>
         </ul>
       </div>
@@ -1846,7 +1846,7 @@
           <li>Разработана <b>полнофункциональная веб-платформа</b> для академических пересдач</li>
           <li>Автоматизирован <b>полный цикл</b>: от доступности преподавателя до фиксации оценки</li>
           <li>Реализована <b>глубокая интеграция</b> с инфраструктурой РТУ МИРЭА</li>
-          <li>Применены <b>современные паттерны</b>: монорепо, RBAC, DDD, event-driven audit, iCal</li>
+          <li>Применены <b>современные паттерны</b>: Монолит, RBAC, DDD, event-driven audit, iCal</li>
           <li>Система <b>готова к production</b> (Docker, Railway, Render, Vercel)</li>
         </ul>
       </div>
