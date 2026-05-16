@@ -7,7 +7,10 @@
       "Bash(Select-Object -Skip 352 -First 70)",
       "Bash(Out-String)",
       "PowerShell(\\(Get-Content \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\index.html\" -Raw -Encoding UTF8\\) | Select-String \"arch-conn\" -AllMatches | ForEach-Object { $_.Matches } | ForEach-Object { $_.Value } | Select-Object -First 5)",
-      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\index.html\" -Encoding UTF8\\) | Select-String \"arch-conn\")"
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\index.html\" -Encoding UTF8\\) | Select-String \"arch-conn\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\" -Recurse | Where-Object { $_.Name -match \"photo\" })",
+      "PowerShell(dir \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\assets\" | Where-Object { $_.Name -match \"photo\" })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\" -Force | Where-Object { $_.Name -match \"photo\" } | Format-Table Name, Length)"
     ]
   }
 }
