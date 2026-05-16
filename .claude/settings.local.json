@@ -12,7 +12,9 @@
       "PowerShell(dir \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\\\\assets\" | Where-Object { $_.Name -match \"photo\" })",
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\" -Force | Where-Object { $_.Name -match \"photo\" } | Format-Table Name, Length)",
       "PowerShell(python --version)",
-      "PowerShell(python -c \"import docx\" 2>&1)"
+      "PowerShell(python -c \"import docx\" 2>&1)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Артём\\\\Downloads\\\\mirea \\(2\\)\" -Force | Where-Object { $_.Name -match \"фото\" } | Format-Table Name, Length)",
+      "PowerShell(Copy-Item *)"
     ]
   }
 }
